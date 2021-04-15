@@ -17,7 +17,8 @@ The algorithm is presented and explained in class.
 All the other source files (`main.py` and `helper.py`) should be left as they are.
 
 
-<motion model algorithm>
+motion model algorithm>>>
+
 각스텝마다 확률은 현재에 확률에 이전확률을 곱해서 구한다(구해서 다 이전까지에다 더함).(현재의 확률은 정규분포를 따른다)
 따라서 P(Xt | Xt-1) = Ptrans * Pprior 이다.
 Xt가 맵 사이즈라 하였을 위치 있을 확률은 맵사이즈 만큼의 조건부 확률은 을 다 더하는것이다.
@@ -29,7 +30,7 @@ Xt가 맵 사이즈라 하였을 위치 있을 확률은 맵사이즈 만큼의 
 
 
 
-<observation_model algorithm>
+observation_model algorithm>>>
 이모델은 측정된 observation 의 위치를 가지고 확률 을 계산하는 모델이다.
 식은 이전확률에 정규분포확률(관측이 들어감, 예측레인지, 거리)을 다 곱하는것이다. 
 ex) observation measurement [1,6]
