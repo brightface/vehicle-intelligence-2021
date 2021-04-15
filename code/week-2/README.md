@@ -39,7 +39,6 @@ ex) observation measurement [1,6]
 p(Z1t = 1 | Xt = 7, m ) * p(Z2t = 6 | Xt = 7, m ) = 정규분포*정규분포
 단 이때 예측 레인지는 observation 길이보다 커야한다.
 아닐때는 0을 리턴한다.
-If you correctly implement the above functions, you expect to see a plot similar to the following:
 
 ![Expected Result of Markov Localization][plot]
 
