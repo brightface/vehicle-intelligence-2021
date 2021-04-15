@@ -36,7 +36,7 @@ observation_model algorithm>>>
 식은 이전확률에 정규분포확률(관측이 들어감, 예측레인지, 거리)을 다 곱하는것이다. 
 ex) observation measurement [1,6]
 -probility observation Xt=7
-p(Z1t = 1 | Xt = 7, m ) * p(Z2t = 6 | Xt = 7, m ) = 정규분포*정규분포
+p(Z1t = 1 | Xt = 7, m ) * p(Z2t = 6 | Xt = 7, m ) = 정규분포*정규분포;
 단 이때 예측 레인지는 observation 길이보다 커야한다.
 아닐때는 0을 리턴한다.
 
