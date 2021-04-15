@@ -21,3 +21,14 @@ If you correctly implement the above functions, you expect to see a plot similar
 ![Expected Result of Markov Localization][plot]
 
 If you run the program (`main.py`) without any modification to the code, it will generate only the frame of the above plot because all probabilities returned by `motion_model()` are zero by default.
+
+motion model algorithm>
+각스텝마다 확률은 현재에 확률에 이전확률을 곱해서 구한다.(현재의 확률은 정규분포를 따른다)
+따라서 P(Xt | Xt-1) = Ptrans * Pprior 이다.
+Xt가 맵 사이즈라 하였을 위치 있을 확률은 맵사이즈 만큼의 조건부 확률은 을 다 더하는것이다.
+따라서 for i in range(map_size)  를 돌며 다 position_prob에 다 더하고 
+확률은 정규분포를 이전확률에 곱한값을 다 더한다.
+단 정규분포의 확률을 구하는 방식은 prob_dist 라서 현재 포지션에 position - 이전포지션 해서 빼줘야한다.
+
+observation_model>
+
