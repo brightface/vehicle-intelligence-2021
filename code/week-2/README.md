@@ -31,6 +31,7 @@ Xt가 맵 사이즈라 하였을 위치 있을 확률은 맵사이즈 만큼의 
 
 
 observation_model algorithm>>>
+
 이모델은 측정된 observation 의 위치를 가지고 확률 을 계산하는 모델이다.
 식은 이전확률에 정규분포확률(관측이 들어감, 예측레인지, 거리)을 다 곱하는것이다. 
 ex) observation measurement [1,6]
