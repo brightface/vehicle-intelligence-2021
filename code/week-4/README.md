@@ -47,7 +47,8 @@ Carefully read comments in the two method bodies and write Python code that does
 시스템 모델 : 수평거리, 이동속도, 고도 (X1, X2, X3)
 Z = np.squrt(X1**2 + X2**2) + v
   == h(x) + v
-  
+---
+Codeing
    # 1. Select the set of landmarks that are visible (within the sensor range).
         for p in self.particles:
             visible_landmarks = []
@@ -96,7 +97,7 @@ Z = np.squrt(X1**2 + X2**2) + v
    # 5. Update the particle's weight by the calculated probability.
             p['w'] = particle_prob
 
-   # Resample particles with replacement with probability proportional to their weights.
+   # 6. Resample particles with replacement with probability proportional to their weights.
     def resample(self):
         # TODO: Select (possibly with duplicates) the set of particles
         #       that captures the posteior belief distribution, by
