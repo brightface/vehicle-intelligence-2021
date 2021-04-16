@@ -57,7 +57,7 @@ Z = np.squrt(X1**2 + X2**2) + v
                     landmark['id'] = id
                     visible_landmarks.append(landmark)
 
-        # 2. Transform each observed landmark's coordinates from the
+   # 2. Transform each observed landmark's coordinates from the
         #    particle's coordinate system to the map's coordinates.
             transformed_observations = []
             for obs in observations:
@@ -67,7 +67,7 @@ Z = np.squrt(X1**2 + X2**2) + v
                                       p['y'] * np.cos(p['t'])
                 transformed_observations.append(obs)
 
-        # 3. Associate each transformed observation to one of the
+   # 3. Associate each transformed observation to one of the
         #    predicted (selected in Step 1) landmark positions.
         #    Use self.associate() for this purpose - it receives
         #    the predicted landmarks and observations; and returns
@@ -76,7 +76,7 @@ Z = np.squrt(X1**2 + X2**2) + v
             assoc_landmarks = self.associate(visible_landmarks, transformed_observations)
             p['accoc'] = [landmark['id'] for landmark in assoc_landmarks]
 
-        # 4. Calculate probability of this set of observations based on
+   # 4. Calculate probability of this set of observations based on
         #    a multi-variate Gaussian distribution (two variables being
         #    the x and y positions with means from associated positions
         #    and variances from std_landmark_x and std_landmark_y).
@@ -96,10 +96,10 @@ Z = np.squrt(X1**2 + X2**2) + v
             cov = np.array([[std_landmark_x**2, corr*std_landmark_x*std_landmark_y],
                             [corr*std_landmark_x*std_landmark_y, std_landmark_y**2]])
             particle_prob = multivariate_normal.pdf(particle_loc, mean=mean, cov=cov)
-        # 5. Update the particle's weight by the calculated probability.
+   # 5. Update the particle's weight by the calculated probability.
             p['w'] = particle_prob
 
-    # Resample particles with replacement with probability proportional to
+   # Resample particles with replacement with probability proportional to
     #   their weights.
     def resample(self):
         # TODO: Select (possibly with duplicates) the set of particles
