@@ -55,4 +55,52 @@ Complete the implementation of EKF with sensor fusion by writing the function `u
 --------------------------------------------
 
 ---
+칼만필터는 입력과 출력이 하나씩인 아주 간단한 구조로 측정값이 입력되면 내부에서 처리한다음 다음 추정값을 출력한다.
+먼저 추정값과 오차 공분산을 예측한다.
+1. X2k = AX1k-1
+2. P1k = AP2k-1A.transpose + Q 
 
+3. 칼만이득계산을한다.
+4. 추정값 계산을 한다.
+5. 오차 공분산 계산을 한다. 
+이과정을 반복하며 측정값과 추정값을 reculsive 하게 반복하여 찾아낸다.
+
+한편 먼저 칼만필터는 3가지의 조건을 만족해야 성립한다.
+1. markov asumption (state complete 해야한다. - 정답이 있다면 반드시 찾을것이고, 없다면 반드시 못찾는다.
+2. 선형 state trasition probability 해야한다.
+3. 선형 measurement probability 해야한다.
+
+따라서 선형일수가 없는 실제가 많으니 extend 칼만필터를 사용한다. 선형일 필요가 없다.
+이때에는 칼만필터의 선형식을 이용할때 자코비안 행렬을 사용한다. (선형적이지 않은 미분한 행렬값을 사용하기 위해서)
+미분할때 자코비안 행렬을 이용한다 이외에는 칼만 필터와 같다
+
+# 1. Compute Jacobian Matrix H_j
+        H_j = Jacobian(self.x)
+# x에 대한 미분한 자코비안행렬값을 구한후 
+        
+        # 2. Calculate S = H_j * P' * H_j^T + R
+# 칼만 게인에 대한 값을 구하기 위해 S 값을 계산한다.
+        S = np.dot(np.dot(H_j, self.P), H_j.T) + self.R
+        # 3. Calculate Kalman gain K = H_j * P' * Hj^T + R
+        K = np.dot(np.dot(self.P, H_j.T), np.linalg.inv(S))
+# 그후 거리를 계산한다.        
+        # 4. Estimate y = z - h(x')
+        px, py, vx, vy = self.x
+        rho_est = sqrt(px ** 2 + py ** 2)
+        phi_est = atan2(py, px)
+        rho_dot_est = (px * vx + py * vy) / sqrt(px ** 2 + py ** 2)
+        y = z - np.array([rho_est, phi_est, rho_dot_est], dtype=np.float32)
+# 노멀라이즈를 한다.
+        # 5. Normalize phi so that it is between -PI and +PI
+        phi = y[1]
+        while phi > pi:
+            phi -= 2 * pi
+        while phi < -pi:
+            phi += 2 * pi
+        y[1] = phi
+# 칼만게인을 갱신하기 위해 새로운 계산을 한다.
+        # 6. Calculate new estimates
+        #    x = x' + K * y
+        #    P = (I - K * H_j) * P
+        self.x = self.x + np.dot(K, y)
+        self.P = self.P - np.dot(np.dot(K, H_j), self.P)
