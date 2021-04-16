@@ -48,8 +48,7 @@ Carefully read comments in the two method bodies and write Python code that does
 Z = np.squrt(X1**2 + X2**2) + v
   == h(x) + v
   
-   # 1. Select the set of landmarks that are visible
-        #    (within the sensor range).
+   # 1. Select the set of landmarks that are visible (within the sensor range).
         for p in self.particles:
             visible_landmarks = []
             for id, landmark in map_landmarks.items():
@@ -57,8 +56,7 @@ Z = np.squrt(X1**2 + X2**2) + v
                     landmark['id'] = id
                     visible_landmarks.append(landmark)
 
-   # 2. Transform each observed landmark's coordinates from the
-        #    particle's coordinate system to the map's coordinates.
+   # 2. Transform each observed landmark's coordinates from theparticle's coordinate system to the map's coordinates.
             transformed_observations = []
             for obs in observations:
                 obs['x'] = obs['x'] + p['x'] * np.cos(p['t']) - \
@@ -67,8 +65,7 @@ Z = np.squrt(X1**2 + X2**2) + v
                                       p['y'] * np.cos(p['t'])
                 transformed_observations.append(obs)
 
-   # 3. Associate each transformed observation to one of the
-        #    predicted (selected in Step 1) landmark positions.
+   # 3. Associate each transformed observation to one of the predicted (selected in Step 1) landmark positions.
         #    Use self.associate() for this purpose - it receives
         #    the predicted landmarks and observations; and returns
         #    the list of landmarks by implementing the nearest-neighbour
@@ -99,8 +96,7 @@ Z = np.squrt(X1**2 + X2**2) + v
    # 5. Update the particle's weight by the calculated probability.
             p['w'] = particle_prob
 
-   # Resample particles with replacement with probability proportional to
-    #   their weights.
+   # Resample particles with replacement with probability proportional to their weights.
     def resample(self):
         # TODO: Select (possibly with duplicates) the set of particles
         #       that captures the posteior belief distribution, by
