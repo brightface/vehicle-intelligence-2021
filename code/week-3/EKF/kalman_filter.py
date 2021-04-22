@@ -32,7 +32,7 @@ class KalmanFilter:
         # 2. Calculate S = H_j * P' * H_j^T + R
         S = np.dot(np.dot(H_j, self.P), H_j.T) + self.R
         
-        # 3. Calculate Kalman gain K = H_j * P' * Hj^T + R
+        # 3. Calculate Kalman gain K = P'*H_j^T * S^-1
         K = np.dot(np.dot(self.P, H_j.T), np.linalg.inv(S))
         
         # 4. Estimate y = z - h(x')
