@@ -1,5 +1,5 @@
 
-# Algorithm
+# <Algorithm>
 # 1. train 함수는 self.classes 의 각 class에 포함되는 데이터의 평균과 분산을 구하는 역할을 합니다.	
 # 	1-2. np.append() 함수를 사용하여 class에 맞는 데이터를 한 배열에 저장함으로써 평균과 분산을 쉽게 구할 수 있게 작업하였습니다
 # 2. prediction 함수는 각 self.classes에 해당하는 observation의 확률을 gaussian_prob() 함수를 이용하여 계산합니다.
