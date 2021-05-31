@@ -72,7 +72,7 @@ def optimum_policy_2D(grid, init, goal, cost):
             if (y, x) == goal and value[(t, y, x)] > 0:
                 # TODO: implement code.
                 value[(t, y, x)] = 0
-                policy[(t, y, x)] = -444
+                policy[(t, y, x)] = -333
                 change = True
                 pass
             # Try to use simple arithmetic to capture state transitions.
@@ -112,7 +112,7 @@ def optimum_policy_2D(grid, init, goal, cost):
         policy2D[(y,x)] = "*"
 
     # visualization
-    while policy[(f,y,x)] != -444:
+    while policy[(f,y,x)] != -333:
         if policy[(f,y,x)] == -1:
             f = (f - 1)%4
         elif policy[(f,y,x)] == 1:
