@@ -1,3 +1,11 @@
+# Algorithm
+1. expand() 는 현재 상태에서 가능한 다음 state set을 반환합니다.
+2. Bicycle Model을 사용하며, [-35,35, step] 의 각도를 이용하여 탐색 범위를 지정하며, 다음 state의 position과 heading(yaw)를 계산합니다
+3. search() 는 BFS 를 이용한 다음 경로를 추적합니다.
+4. expand() 를 이용하여 구한 next_states 정보를 토대로, grid map 상의 갈 수 있는 경로를 확인하여 최적의 경로를 생성합니다.
+5. theta_to_stack_num() 는 파라미터 theta 의 해당 stack을 반환한다. 이때 theta 는 expand() 에서 계산된 radian 값이 입력으로 들어오므로 degree 변환을 해줘야 에러 없이 작동합니다.
+heuristic() 은 L2 Distance를 이용하여 설계하였습니다.![image](https://user-images.githubusercontent.com/17923737/120185319-ff368c00-c24c-11eb-860f-4a4d15db76d2.png)
+
 # Week 6 - Prediction & Behaviour Planning
 
 ---
