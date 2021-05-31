@@ -1,3 +1,9 @@
+# Algorithm
+1. 현재 위치 좌표(x,y)가 도착지에 도달하였을때, policy에 영향을 주지 않은 특정 숫자(-333) 로 표기
+2. 도착지가 아닐 경우, action state를 반복하여 계산된 value를 기준으로 action을 update
+3. policy2D 배열은 2차원 공간의 경로 이동 Action State를 기록하여 시각화 한다.
+
+
 # Week 5 - Path Planning & the A* Algorithm
 
 ---
